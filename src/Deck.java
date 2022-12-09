@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Deck
 {
     private int cardsLeft;
+    // deck is an arraylist of cards
     private ArrayList<Card> cards;
 
     public Deck(String[] rank, String[] suit, int[] points)
@@ -18,6 +19,7 @@ public class Deck
         }
         cardsLeft = cards.size();
     }
+    // checks if deck is empty by comparing cards left to zero
     public boolean isEmpty()
     {
         if (cardsLeft == 0)
@@ -26,11 +28,12 @@ public class Deck
         }
         return false;
     }
-
+    //getters and setters
     public int getCardsLeft()
     {
         return cardsLeft;
     }
+    // deal the top card in the deck
     public Card deal()
     {
         if(!isEmpty())
@@ -47,15 +50,16 @@ public class Deck
         cardsLeft = cards.size();
         for (int i = 0; i < cardsLeft; i++)
         {
+            // get a random card in the deck
             int r = (int) (Math.random() * cardsLeft);
             Card cardI = cards.get(i);
             Card cardR = cards.get(r);
+            // swap i with the random card
             cards.set(i, cardR);
             cards.set(r, cardI);
-            //need a temp variable?
-
         }
     }
+    // deals one card to a player
     public void dealHand(Player player)
     {
         for(int i = 0; i < 7; i++)

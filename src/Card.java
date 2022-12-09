@@ -1,15 +1,15 @@
 public class Card {
+    // card with instance variables rank, suit, and points
     private String rank;
     private String suit;
     private int points;
-
     public Card(String rank, String suit, int points)
     {
-        rank = rank;
+        this.rank = rank;
         this.suit = suit;
         this.points = points;
     }
-
+    //getters and setters
     public String getRank()
     {
         return rank;

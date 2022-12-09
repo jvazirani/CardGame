@@ -9,6 +9,7 @@ public class Player
     {
         name = theName;
         points = 0;
+        hand = new ArrayList<Card>();
     }
 
     public Player(String theName, ArrayList<Card> theHand)
@@ -47,7 +48,7 @@ public class Player
     {
         for(int i = 0; i < hand.size(); i++)
         {
-            if (hand.get(i).getRank().equals(answerRank))
+            if (hand.get(i).getRank().equalsIgnoreCase(answerRank))
             {
                 return hand.remove(i);
             }

@@ -8,7 +8,7 @@ public class Game
     final private String[] RANKS = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
     final private String[] SUITS = {"Clubs", "Spades", "Hearts", "Diamonds"};
 
-    final private int[] POINTS = {1, 2, 3};
+    final private int[] POINTS = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     public Game()
     {
         // ask players for their names and create player objects
@@ -35,6 +35,8 @@ public class Game
         printInstructions();
         deck.dealHand(player1);
         deck.dealHand(player2);
+        System.out.println(player1);
+        System.out.println(player2);
         while(gameNotOver())
         {
             playTurn(player1, player2);
@@ -48,16 +50,27 @@ public class Game
         //if one player's hand is empty, game is over
         if (player1.getHand().isEmpty())
         {
-            winner = player1;
             return false;
         }
         else if (player2.getHand().isEmpty())
         {
-            winner = player2;
             return false;
         }
         //otherwise game is not over
         return true;
+    }
+
+    public Player getWinner()
+    {
+        if(player1.getPoints() > player2.getPoints())
+        {
+            winner = player1;
+        }
+        else if (player2.getPoints() > player1.getPoints())
+        {
+            winner = player2;
+        }
+        return winner;
     }
 
     public void playTurn(Player player, Player other)
@@ -69,8 +82,10 @@ public class Game
         Card c = other.has(answerRank);
         if(c != null)
         {
-            player.addCard(c);
-            // if yes, transfer cards (get rid of card in player and add card to other)
+            // if yes, transfer cards (other gives
+            player.has(answerRank);
+            // add points to player
+            player.addPoints(1);
             // if yes, player1 gets to go again
             playTurn(player, other);
         }
