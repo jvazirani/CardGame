@@ -33,5 +33,30 @@ public class Player
         return hand;
     }
 
-    public int addPoints()
+    public void addPoints(int newPoints)
+    {
+        points += newPoints;
+    }
+
+    public void addCard(Card newCard)
+    {
+        hand.add(newCard);
+    }
+
+    public Card has(String answerRank)
+    {
+        for(int i = 0; i < hand.size(); i++)
+        {
+            if (hand.get(i).getRank().equals(answerRank))
+            {
+                return hand.remove(i);
+            }
+        }
+        return null;
+    }
+
+    public String toString()
+    {
+        return name + " has " + points + "points" + "\n" +  name +  "cards: " + hand;
+    }
 }

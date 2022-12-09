@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 // test
-public class Deck {
+public class Deck
+{
     private int cardsLeft;
     private ArrayList<Card> cards;
 
-    public Deck(String[] rank, String[] suit, int[] points) {
+    public Deck(String[] rank, String[] suit, int[] points)
+    {
         cards = new ArrayList<Card>();
         for(int i = 0; i < suit.length; i++)
         {
@@ -16,7 +18,6 @@ public class Deck {
         }
         cardsLeft = cards.size();
     }
-
     public boolean isEmpty()
     {
         if (cardsLeft == 0)
@@ -30,12 +31,12 @@ public class Deck {
     {
         return cardsLeft;
     }
-
     public Card deal()
     {
         if(!isEmpty())
         {
             int index = cards.size() - cardsLeft;
+            cardsLeft--;
             return cards.get(index);
         }
         return null;
@@ -44,7 +45,23 @@ public class Deck {
     public void shuffle()
     {
         cardsLeft = cards.size();
+        for (int i = 0; i < cardsLeft; i++)
+        {
+            int r = (int) (Math.random() * cardsLeft);
+            Card cardI = cards.get(i);
+            Card cardR = cards.get(r);
+            cards.set(i, cardR);
+            cards.set(r, cardI);
+            //need a temp variable?
 
+        }
     }
-
+    public void dealHand(Player player)
+    {
+        for(int i = 0; i < 7; i++)
+        {
+            Card newCard = deal();
+            player.addCard(newCard);
+        }
+    }
 }
