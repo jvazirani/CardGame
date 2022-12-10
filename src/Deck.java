@@ -47,6 +47,7 @@ public class Deck
 
     public void shuffle()
     {
+        //reset cards left
         cardsLeft = cards.size();
         for (int i = 0; i < cardsLeft; i++)
         {
@@ -59,7 +60,7 @@ public class Deck
             cards.set(r, cardI);
         }
     }
-    // deals one card to a player
+    // deals a hand to a player (7 cards)
     public void dealHand(Player player)
     {
         for(int i = 0; i < 7; i++)
@@ -67,5 +68,11 @@ public class Deck
             Card newCard = deal();
             player.addCard(newCard);
         }
+    }
+    //deals only one card to a player
+    public void dealCard(Player player)
+    {
+        Card newCard = deal();
+        player.addCard(newCard);
     }
 }

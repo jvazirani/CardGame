@@ -18,7 +18,7 @@ public class Player
         points = 0;
         hand = theHand;
     }
-
+    //getters and setters
     public String getName()
     {
         return name;
@@ -43,11 +43,24 @@ public class Player
     {
         hand.add(newCard);
     }
-
+    //method to see if a player has a hard with a certain rank
     public Card has(String answerRank)
     {
         for(int i = 0; i < hand.size(); i++)
         {
+            if (hand.get(i).getRank().equalsIgnoreCase(answerRank))
+            {
+                return hand.get(i);
+            }
+        }
+        return null;
+    }
+    //removes a card from a players hand
+    public Card remove(String answerRank)
+    {
+        for(int i = 0; i < hand.size(); i++)
+        {
+            //if that card is found, remove it
             if (hand.get(i).getRank().equalsIgnoreCase(answerRank))
             {
                 return hand.remove(i);
@@ -58,6 +71,6 @@ public class Player
 
     public String toString()
     {
-        return name + " has " + points + "points" + "\n" +  name +  "cards: " + hand;
+        return name + " has " + points + " points" + "\n" +  name +  "'s cards: " + hand;
     }
 }
