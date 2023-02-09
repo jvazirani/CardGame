@@ -6,17 +6,17 @@ public class Card {
     private String suit;
     private int points;
 
-    private Image[] cards;
+    public static int NUM_CARDS = 52;
 
-    private GameViewer game;
-    public Card(String rank, String suit, int points, GameViewer game)
+    private Image cardImage;
+    //instance variable for image of card
+    public Card(String rank, String suit, int points, Image cardImage)
     {
+        this.cardImage = cardImage;
         this.rank = rank;
         this.suit = suit;
         this.points = points;
-        this.game = game;
-        // for loop to initialize cards
-        cards = new ImageIcon(//)
+
     }
     //getters and setters
     public String getRank()
@@ -54,12 +54,17 @@ public class Card {
         return rank + " of " + suit;
     }
 
-    public void draw(Graphics g, Player p){
+    public void draw(Graphics g, GameViewer game){
         int x = 50;
         int y = 50;
-        for (int i = 0; i < p.getHand().size(); i++){
             // don't do i b/c it won't be random
-            g.drawImage(cards[i], (x + (i * 50)), y, game);
+            g.drawImage(cardImage, (x + (50)), y, game);
         }
-    }
+
+
+
+    // if is face up
+    // draw players hand
+    // how to draw actual card if know what the players hand is?
+    // else draw face down card
 }

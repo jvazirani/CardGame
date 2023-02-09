@@ -1,19 +1,30 @@
+import java.awt.*;
 import java.util.ArrayList;
 // test
+import javax.swing.*;
 public class Deck
 {
     private int cardsLeft;
     // deck is an arraylist of cards
     private ArrayList<Card> cards;
+    private Image cardsImage;
+    public static int NUM_CARDS = 52;
+
+    private Image[] cardsImages;
 
     public Deck(String[] rank, String[] suit, int[] points)
     {
+        cardsImages = new Image[NUM_CARDS];
+        for (int i = 0; i < NUM_CARDS; i++){
+            cardsImages[i] = new ImageIcon("resources/Cards 3/" + (i + 1) + ".png").getImage();
+        }
+        // assign correct card to image
         cards = new ArrayList<Card>();
         for(int i = 0; i < suit.length; i++)
         {
             for (int j = 0; j < rank.length; j++)
             {
-                Card card = new Card(rank[j], suit[i], points[j]);
+                Card card = new Card(rank[j], suit[i], points[j], cardsImages[0]);
                 cards.add(card);
             }
         }

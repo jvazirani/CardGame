@@ -1,14 +1,13 @@
 import java.awt.*;
 import javax.swing.*;
 public class GameViewer extends JFrame{
-    private final int WINDOW_WIDTH = 800;
-    private final int WINDOW_HEIGHT = 800;
+    public static int WINDOW_WIDTH = 800;
+    public static int WINDOW_HEIGHT = 800;
     private Image[] cards;
-    private Game g;
+    private Game game;
 
-    public GameViewer(Game g){
-        this.g = g;
-//        cards = new ImageIcon(//).getImage();
+    public GameViewer(Game game){
+        this.game = game;
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Go Fish");
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -19,10 +18,14 @@ public class GameViewer extends JFrame{
         return cards;
     }
 
-    public void paint(Graphics g, Player p){
-        g.drawImage(backgroundImage, 0, 0, this);
-        for(int i = 0; i < p.getHand().size(); i++){
-            g.draw(g, p);
+    @Override
+    public void paint(Graphics g){
+//        g.drawImage(backgroundImage, 0, 0, this);
+        g.setColor(Color.white);
+        g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+        for(int i = 0; i < game.getCurrentPlayer().getHand().size(); i++){
+            game.getCurrentPlayer().getHand().get(i).draw(g, this);
+        }
     }
 
 

@@ -5,10 +5,14 @@ public class Game
 {
     private Player player1;
     private Player player2;
+
+    private Player currentPlayer;
     private Deck deck;
     final private String[] RANKS = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
     final private String[] SUITS = {"Clubs", "Spades", "Hearts", "Diamonds"};
     final private int[] POINTS = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    private GameViewer window;
     public Game()
     {
         // ask players for their names and create player objects
@@ -19,7 +23,9 @@ public class Game
         String name2 = scanner.nextLine();
         player1 = new Player(name1);
         player2 = new Player(name2);
+        currentPlayer = player1;
         deck = new Deck(RANKS, SUITS, POINTS);
+        window = new GameViewer(this);
     }
 
     public void printInstructions()
@@ -41,18 +47,24 @@ public class Game
         printInstructions();
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many rounds would you like to play?");
+        window.repaint();
         int numRounds = scanner.nextInt();
         deck.dealHand(player1);
         deck.dealHand(player2);
         System.out.println(player1);
         System.out.println(player2);
+        window.repaint();
         //user gets to choose num of rounds to play for
         for (int i = 0; i < numRounds; i++)
         {
             playTurn(player1, player2);
+            currentPlayer = player2;
+            window.repaint();
             playTurn(player2, player1);
+            window.repaint();
         }
         printWinner();
+        window.repaint();
     }
 
     public void playTurn(Player player, Player other)
@@ -105,6 +117,10 @@ public class Game
         {
             System.out.println("TIE!!!");
         }
+    }
+
+    public Player getCurrentPlayer(){
+        return currentPlayer;
     }
 
     public static void main(String[] args)
