@@ -5,8 +5,9 @@ public class Card {
     private String rank;
     private String suit;
     private int points;
-
     public static int NUM_CARDS = 52;
+    public static int CARD_WIDTH = 80;
+    public static int CARD_HEIGHT = 140;
 
     private Image cardImage;
     //instance variable for image of card
@@ -58,8 +59,11 @@ public class Card {
         int x = 50;
         int y = 50;
             // don't do i b/c it won't be random
-            g.drawImage(cardImage, (x + (50)), y, game);
+        // loop should go for hand.size
+        for(int i = 0; i < NUM_CARDS; i++){
+            g.drawImage(cardImage, (x + (i * 20)), y, CARD_WIDTH, CARD_HEIGHT, game);
         }
+    }
 
 
 
