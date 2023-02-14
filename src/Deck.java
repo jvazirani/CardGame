@@ -16,16 +16,16 @@ public class Deck
         cardsImages = new Image[NUM_CARDS];
         // assign cards images to each card image
         for (int i = 0; i < NUM_CARDS; i++){
-            cardsImages[i] = new ImageIcon("resources/Cards 3/" + (i + 1) + ".png").getImage();
+            cardsImages[i] = new ImageIcon("resources/Cards/" + (i + 1) + ".png").getImage();
         }
         // assign correct card to image
         cards = new ArrayList<Card>();
         int counter = 0;
-        for(int i = 0; i < suit.length; i++)
+        for(int i = 0; i < rank.length; i++)
         {
-            for (int j = 0; j < rank.length; j++)
+            for (int j = 0; j < suit.length; j++)
             {
-                Card card = new Card(rank[j], suit[i], points[j], cardsImages[counter]);
+                Card card = new Card(rank[i], suit[j], points[i], cardsImages[counter]);
                 cards.add(card);
                 counter++;
             }

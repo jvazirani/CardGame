@@ -21,10 +21,13 @@ public class GameViewer extends JFrame{
     @Override
     public void paint(Graphics g){
 //        g.drawImage(backgroundImage, 0, 0, this);
-        g.setColor(Color.white);
+        g.setColor(Color.pink);
         g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+        // say [players] cards
+        // say [player], what are u asking for?
+        // then paint current players hand
         for(int i = 0; i < game.getCurrentPlayer().getHand().size(); i++){
-            game.getCurrentPlayer().getHand().get(i).draw(g, this);
+            game.getCurrentPlayer().drawHand(g, this);
         }
     }
 

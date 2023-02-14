@@ -55,14 +55,10 @@ public class Card {
         return rank + " of " + suit;
     }
 
-    public void draw(Graphics g, GameViewer game){
-        int x = 50;
-        int y = 50;
+    public void draw(Graphics g, GameViewer game, int x, int y){
             // don't do i b/c it won't be random
         // loop should go for hand.size
-        for(int i = 0; i < NUM_CARDS; i++){
-            g.drawImage(cardImage, (x + (i * 20)), y, CARD_WIDTH, CARD_HEIGHT, game);
-        }
+            g.drawImage(cardImage, x, y, CARD_WIDTH, CARD_HEIGHT, game);
     }
 
 

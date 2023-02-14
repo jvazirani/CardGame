@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.awt.*;
 public class Player
 {
     private String name;
@@ -67,6 +68,16 @@ public class Player
             }
         }
         return null;
+    }
+
+    // draw method in player to draw hand
+    public void drawHand(Graphics g, GameViewer game){
+        int x = 10;
+        int y = 50;
+        for (int i = 0; i < hand.size(); i++){
+            x += 80;
+            hand.get(i).draw(g, game, x, y);
+        }
     }
 
     public String toString()

@@ -8,9 +8,9 @@ public class Game
 
     private Player currentPlayer;
     private Deck deck;
-    final private String[] RANKS = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
-    final private String[] SUITS = {"Clubs", "Spades", "Hearts", "Diamonds"};
-    final private int[] POINTS = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    final private String[] RANKS = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+    final private String[] SUITS = {"Spades", "Hearts", "Diamonds", "Clubs"};
+    final private int[] POINTS = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 
     private GameViewer window;
     public Game()
@@ -58,7 +58,7 @@ public class Game
         for (int i = 0; i < numRounds; i++)
         {
             playTurn(player1, player2);
-            currentPlayer = player2;
+//            currentPlayer = player2;
             window.repaint();
             playTurn(player2, player1);
             window.repaint();
