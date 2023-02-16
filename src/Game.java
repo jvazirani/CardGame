@@ -13,6 +13,7 @@ public class Game
     final private int[] POINTS = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 
     private GameViewer window;
+
     public Game()
     {
         // ask players for their names and create player objects
@@ -79,6 +80,7 @@ public class Game
         Card d = player.has(answerRank);
         if((c != null) && (d != null))
         {
+            window.setStatus(4);
             // if yes, both cards get removed from each deck
             player.remove(answerRank);
             window.repaint();
@@ -95,6 +97,7 @@ public class Game
         else
         {
             // player has to deal another card and their turn is over
+            window.setStatus(5);
             System.out.println("Go fish");
             deck.dealCard(player);
             System.out.println(player1);
@@ -110,14 +113,17 @@ public class Game
         if (player1.getPoints() > player2.getPoints())
         {
             System.out.println(player1.getName() + " Won!!!!");
+            window.setStatus(1);
         }
         else if (player2.getPoints() > player1.getPoints())
         {
             System.out.println(player2.getName() + " Won!!!!");
+            window.setStatus(2);
         }
         else
         {
             System.out.println("TIE!!!");
+            window.setStatus(3);
         }
     }
 

@@ -6,10 +6,16 @@ public class GameViewer extends JFrame{
     public static int X_STARTING_POINT = 150;
 
     public static int Y_STARTING_POINT = 150;
+
+    public static int CENTER_X = 300;
+
+    public static int CENTER_Y = 300;
     private Image[] cards;
     private Game game;
 
     private Image background;
+
+    private int status;
 
     public GameViewer(Game game){
         background = new ImageIcon("resources/background.png").getImage();
@@ -18,10 +24,15 @@ public class GameViewer extends JFrame{
         this.setTitle("Go Fish");
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.setVisible(true);
+        status = 0;
     }
 
     public Image[] getImages(){
         return cards;
+    }
+
+    public void setStatus(int newStatus){
+        status = newStatus;
     }
 
     @Override
@@ -41,11 +52,27 @@ public class GameViewer extends JFrame{
         for(int i = 0; i < game.getCurrentPlayer().getHand().size(); i++){
             game.getCurrentPlayer().drawHand(g, this);
         }
+
+        if(status == 1){
+            g.drawString("Player 1 won!! ", CENTER_X, CENTER_Y);
+        }
+        else if (status == 2){
+            g.drawString("Player 2 won!!", CENTER_X, CENTER_Y);
+        }
+        else if (status == 3){
+            g.drawString("TIE",CENTER_X, CENTER_Y);
+        }
+        else if(status == 4){
+            g.drawString("PAIR",CENTER_X, CENTER_Y);
+        }
+        else if (status == 5){
+            g.drawString("GO FISH",CENTER_X, CENTER_Y);
+        }
         //TODO:
-        // if there is a pair, print pair
-        // if there is a go fish, print go fish
-        //if there is a winner, print the win screen
+        // do background winning screen
         // make sure no more random constants and comment code
+        // adjust coordinates when necessary
+        // readme file
     }
 
 
