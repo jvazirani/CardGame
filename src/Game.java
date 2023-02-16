@@ -58,9 +58,10 @@ public class Game
         for (int i = 0; i < numRounds; i++)
         {
             playTurn(player1, player2);
-//            currentPlayer = player2;
+            currentPlayer = player2;
             window.repaint();
             playTurn(player2, player1);
+            currentPlayer = player1;
             window.repaint();
         }
         printWinner();
@@ -80,6 +81,7 @@ public class Game
         {
             // if yes, both cards get removed from each deck
             player.remove(answerRank);
+            window.repaint();
             other.remove(answerRank);
             // add points to player who guessed
             player.addPoints(1);
@@ -121,6 +123,14 @@ public class Game
 
     public Player getCurrentPlayer(){
         return currentPlayer;
+    }
+
+    public Player getPlayer1(){
+        return player1;
+    }
+
+    public Player getPlayer2(){
+        return player2;
     }
 
     public static void main(String[] args)

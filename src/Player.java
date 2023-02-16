@@ -72,11 +72,15 @@ public class Player
 
     // draw method in player to draw hand
     public void drawHand(Graphics g, GameViewer game){
-        int x = 10;
-        int y = 50;
+        int x = 60;
+        int y = 250;
         for (int i = 0; i < hand.size(); i++){
             x += 80;
             hand.get(i).draw(g, game, x, y);
+            if (x > (600)){
+                x = 60;
+                y = 250 + 140;
+            }
         }
     }
 
