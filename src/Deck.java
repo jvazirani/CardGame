@@ -14,11 +14,10 @@ public class Deck
     public Deck(String[] rank, String[] suit, int[] points)
     {
         cardsImages = new Image[NUM_CARDS];
-        // assign cards images to each card image
+        // Assign cards images to each card image
         for (int i = 0; i < NUM_CARDS; i++){
             cardsImages[i] = new ImageIcon("resources/Cards/" + (i + 1) + ".png").getImage();
         }
-        // assign correct card to image
         cards = new ArrayList<Card>();
         int counter = 0;
         for(int i = 0; i < rank.length; i++)

@@ -5,7 +5,11 @@ public class Player
     private String name;
     private int points;
     private ArrayList <Card> hand;
-
+    public static int WINDOW_WIDTH = 800;
+    public static int START_X = 60;
+    public static int START_Y = 250;
+    public static int CARD_HEIGHT = 140;
+    public static int CARD_WIDTH = 80;
     public Player(String theName)
     {
         name = theName;
@@ -72,18 +76,18 @@ public class Player
 
     // draw method in player to draw hand
     public void drawHand(Graphics g, GameViewer game){
-        int x = 60;
-        int y = 250;
+        int x = START_X;
+        int y = START_Y;
         for (int i = 0; i < hand.size(); i++){
-            x += 80;
+            x += CARD_WIDTH;
             hand.get(i).draw(g, game, x, y);
-            if (x > (600)){
-                x = 60;
-                y = 250 + 140;
+            // If it is getting to close to off the board, move it back
+            if (x > (WINDOW_WIDTH - 200)){
+                x = START_X;
+                y = START_Y + CARD_HEIGHT;
             }
         }
     }
-
     public String toString()
     {
         return name + " has " + points + " points" + "\n" +  name +  "'s cards: " + hand;

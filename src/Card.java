@@ -5,10 +5,8 @@ public class Card {
     private String rank;
     private String suit;
     private int points;
-    public static int NUM_CARDS = 52;
     public static int CARD_WIDTH = 80;
     public static int CARD_HEIGHT = 140;
-
     private Image cardImage;
     //instance variable for image of card
     public Card(String rank, String suit, int points, Image cardImage)
@@ -56,15 +54,7 @@ public class Card {
     }
 
     public void draw(Graphics g, GameViewer game, int x, int y){
-            // don't do i b/c it won't be random
-        // loop should go for hand.size
-            g.drawImage(cardImage, x, y, CARD_WIDTH, CARD_HEIGHT, game);
+        // Just draw one card
+        g.drawImage(cardImage, x, y, CARD_WIDTH, CARD_HEIGHT, game);
     }
-
-
-
-    // if is face up
-    // draw players hand
-    // how to draw actual card if know what the players hand is?
-    // else draw face down card
 }
