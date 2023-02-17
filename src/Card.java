@@ -17,7 +17,7 @@ public class Card {
         this.points = points;
 
     }
-    //getters and setters
+    // Getters and setters
     public String getRank()
     {
         return rank;

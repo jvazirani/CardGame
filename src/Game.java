@@ -17,7 +17,7 @@ public class Game
 
     public Game()
     {
-        // ask players for their names and create player objects
+        // Ask players for their names and create player objects
         Scanner scanner = new Scanner(System.in);
         System.out.println("Player 1, What is your name?");
         String name1 = scanner.nextLine();

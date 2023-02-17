@@ -74,7 +74,7 @@ public class Player
         return null;
     }
 
-    // draw method in player to draw hand
+    // Draw method in player to draw hand
     public void drawHand(Graphics g, GameViewer game){
         int x = START_X;
         int y = START_Y;

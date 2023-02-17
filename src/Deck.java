@@ -81,7 +81,7 @@ public class Deck
             player.addCard(newCard);
         }
     }
-    //deals only one card to a player
+    // Deals only one card to a player
     public void dealCard(Player player)
     {
         Card newCard = deal();
